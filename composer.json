@@ -1,8 +1,9 @@
 {
   "autoload": {
-    "psr-4": { "MEPDatabaseTask\\": "src/" }
+    "psr-4": { "App\\Task\\": "app/task" }
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "3.*"
+    "squizlabs/php_codesniffer": "3.*",
+    "phpunit/phpunit": "^10.3"
   }
 }

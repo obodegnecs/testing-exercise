@@ -3,13 +3,13 @@ namespace App\Task;
 
 class TaskList
 {
-    private Task $task;
+    private array $tasks;
 
     public function add(Task $task): void {
-     $this->task = $task;
+        $this->tasks[] = $task;
     }
      public function get(int $index): ?Task {
-         return $this->task ?? null;
+         return $this->tasks[$index] ?? null;
      }
 
 }

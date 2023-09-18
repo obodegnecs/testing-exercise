@@ -67,4 +67,11 @@ class TaskListTest extends TestCase
         $this->assertSame($new_task2, $task_list->getById(1));
     }
 
+    public function testExceptionThrownFromGetWhenIndexIsNegative() {
+        $this->expectException(InvalidArgumentException::class);
+
+        $task_list = new TaskList();
+        $task_list->get(-1);
+    }
+
 }

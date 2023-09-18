@@ -1,6 +1,8 @@
 <?php
 namespace App\Task;
 
+use InvalidArgumentException;
+
 class TaskList
 {
     private array $tasks;
@@ -10,6 +12,9 @@ class TaskList
     }
 
     public function get(int $index): ?Task {
+        if ($index < 0) {
+            throw new InvalidArgumentException;
+        }
          return $this->tasks[$index] ?? null;
     }
 

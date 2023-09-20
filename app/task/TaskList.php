@@ -5,24 +5,27 @@ use InvalidArgumentException;
 
 class TaskList
 {
-    private array $_tasks;
+    /**
+     * Task[] $_tasks
+     */
+    private array $tasks;
 
     public function add(Task $task): void
     {
-        $this->_tasks[] = $task;
+        $this->tasks[] = $task;
     }
 
     public function get(int $index): ?Task
     {
         if ($index < 0) {
-            throw new InvalidArgumentException;
+            throw new InvalidArgumentException ("The index cannot be negative");
         }
          return $this->tasks[$index] ?? null;
     }
 
     public function getById(int $id): ?Task
     {
-        foreach ($this->_tasks as $task) {
+        foreach ($this->tasks as $task) {
             if ($task->id === $id) {
                 return $task;
             }
@@ -46,18 +49,18 @@ class TaskList
         switch ($column){
         case "name":
             usort(
-                $this->_tasks,
+                $this->tasks,
                 fn($task1, $task2) => strcmp($task1->name, $task2->name)
             );
             break;
         case "id":
             usort(
-                $this->_tasks,
+                $this->tasks,
                 fn($task1, $task2) => $task1->id - $task2->id
             );
             break;
         default: 
-            throw new InvalidArgumentException;
+            throw new InvalidArgumentException("The column does not exist");
         }
     }
 }
